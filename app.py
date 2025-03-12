@@ -15,6 +15,7 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 while True:
     x, frame = cap.read()
+    print(x)
     print(frame)
 
     if not x or frame is None:
