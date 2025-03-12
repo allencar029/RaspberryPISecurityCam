@@ -2,7 +2,7 @@ import cv2
 import time
 import datetime
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
 while True:
     x, frame = cap.read()
