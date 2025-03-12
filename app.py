@@ -2,10 +2,12 @@ import cv2
 import time
 import datetime
 
-cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
+cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L2)
 
-if not cap.isOpened():
-    print("Error: Could not open camera.")
+if cap.isOpened():
+    print("Message: Cap is opened")
+else:
+    print ("Error: Could not open camera")
     exit()
 
 while True:
