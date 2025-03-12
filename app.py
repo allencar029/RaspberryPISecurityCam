@@ -2,7 +2,7 @@ import cv2
 import time
 import datetime
 
-cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L2)
+cap = cv2.VideoCapture('/dev/video1', cv2.CAP_V4L2)
 
 if cap.isOpened():
     print("Message: Cap is opened")
