@@ -2,7 +2,7 @@ import cv2
 import time
 import datetime
 
-cap = cv2.VideoCapture('/dev/video1', cv2.CAP_V4L2)
+cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L2)
 
 if cap.isOpened():
     print("Message: Cap is opened")
@@ -15,8 +15,9 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 while True:
     x, frame = cap.read()
+    print(frame)
 
-    if not x:
+    if not x or frame is None:
         print("Error: Failed to capture image")
         break
 
