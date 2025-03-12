@@ -3,7 +3,9 @@ import numpy as np
 import subprocess
 import os
 
-os.environ['Display'] = ':0'
+subprocess.run('export DISPLAY=:0', shell=True, executable='/bin/bash')
+
+os.environ['DISPLAY'] = ':0'
 
 subprocess.run(["libcamera-still", "-o", "image.jpg", "--width", "640", "--height", "480"])
 
