@@ -10,6 +10,10 @@ if frame is None:
     print("Error: Failed to load image")
 else:
     cv2.imshow("Camera", frame)
-    cv2.waitKey(0)
+    while True:
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord('q'):
+            print("Exiting...")
+            break
 
 cv2.destroyAllWindows()
