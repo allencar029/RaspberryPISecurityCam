@@ -1,35 +1,15 @@
-import cv2 
-import time
-import datetime
+import cv2
+import numpy as np
+import subprocess
 
-cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L2)
+subprocess.run(["libcamera-still", "-o", "image.jpg", "--width", "640", "--height", "480"])
 
-if cap.isOpened():
-    print("Message: Cap is opened")
+frame = cv2.imread("image.jpg")
+
+if frame is None:
+    print("Error: Failed to load image")
 else:
-    print ("Error: Could not open camera")
-    exit()
-
-print("Width:", cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-print("Height:", cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-
-
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
-
-while True:
-    x, frame = cap.read()
-    print(x)
-    print(frame)
-
-    if not x or frame is None:
-        print("Error: Failed to capture image")
-        break
-
     cv2.imshow("Camera", frame)
+    cv2.waitKey(0)
 
-    if cv2.waitKey(1) == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows() 
+cv2.destroyAllWindows()
