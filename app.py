@@ -16,7 +16,7 @@ if frame is None:
 else:
     cv2.imshow("Camera", frame)
     while True:
-        key = cv2.waitKey(1) & 0xFF
+        key = cv2.waitKey(0) & 0xFF
         if key == ord('q'):
             print("Exiting...")
             break
