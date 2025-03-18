@@ -1,4 +1,5 @@
 from flask_app import app
+from flask import Response, render_template
 import cv2
 import numpy as np
 import subprocess
@@ -26,7 +27,20 @@ while True:
 cv2.destroyAllWindows()
 picam2.stop()
 
+def generate_frames():
+    while True:
+        frame = picam2.capture_array()
+        x, buffer = cv2.imencode('.jpg', frame)
+        frame_bytes = buffer.tobytes()
+
+        yield (b'--framern'
+               b'Content-Type: image/jpegrnrn' + frame_bytes + b'rn')
+        
 
 app.route('/video')
 def root():
-    return 
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+app.route('/')
+def index():
+    return render_template('index.html')
