@@ -4,6 +4,7 @@ import cv2
 import numpy as np
 import subprocess
 import os
+import time
 from picamera2 import Picamera2 
 from libcamera import controls
 
@@ -14,18 +15,7 @@ os.environ['DISPLAY'] = ':0'
 picam2 = Picamera2()
 picam2.start()
 picam2.set_controls({"AwbMode": "auto"})
-
-while True:
-    frame = picam2.capture_array()
-    cv2.imshow("Live Video", frame)
-    
-    key = cv2.waitKey(1) & 0xFF
-    if key == ord('q'):
-        print("Exiting...")
-        break
-
-cv2.destroyAllWindows()
-picam2.stop()
+time.sleep(2)
 
 def generate_frames():
     while True:
@@ -37,10 +27,10 @@ def generate_frames():
                b'Content-Type: image/jpegrnrn' + frame_bytes + b'rn')
         
 
-app.route('/video')
-def root():
+@app.route('/video')
+def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-app.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
