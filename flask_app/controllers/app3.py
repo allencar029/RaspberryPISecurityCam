@@ -13,7 +13,8 @@ os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
 picam2.start()
-picam2.set_controls({"AwbMode": controls.AwbMode.AUTO})
+print(picam2.controls)
+picam2.set_controls({"AwbMode": 0})
 
 time.sleep(2)
 
