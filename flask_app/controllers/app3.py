@@ -1,9 +1,11 @@
+from picamera2 import Picamera2 
+from libcamera import controls
 import cv2
 import numpy as np
 import subprocess
 import os
-from picamera2 import Picamera2 
-from libcamera import controls
+import time
+
 
 subprocess.run('export DISPLAY=:0', shell=True, executable='/bin/bash')
 
@@ -11,7 +13,9 @@ os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
 picam2.start()
-picam2.set_controls({"AwbMode": controls.AwbMode.Auto})
+picam2.set_controls({"AwbMode": controls.AwbMode.AUTO})
+
+time.sleep(2)
 
 while True:
     frame = picam2.capture_array()
