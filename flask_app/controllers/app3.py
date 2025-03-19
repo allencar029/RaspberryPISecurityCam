@@ -11,7 +11,7 @@ os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
 picam2.start()
-picam2.set_controls({"AwbMode": "auto"})
+picam2.set_controls({"AwbMode": controls.AwbMode.Auto})
 
 while True:
     frame = picam2.capture_array()
