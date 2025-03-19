@@ -26,7 +26,7 @@ print("controls after:", picam2.controls)
 time.sleep(2)
 
 while True:
-    frame = picam2.capture_array()
+    frame = picam2.capture_array("main")
     cv2.imshow("Live Video", frame)
     
     key = cv2.waitKey(1) & 0xFF
