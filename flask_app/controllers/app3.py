@@ -20,7 +20,7 @@ picam2.set_controls({
     "AwbEnable": False,
     "ColourTemperature": 4500,
     "ColourGains": (1.5, 2.0),
-})
+}, apply_controls_now=True)
 print("controls after:", picam2.controls)
 
 time.sleep(2)
