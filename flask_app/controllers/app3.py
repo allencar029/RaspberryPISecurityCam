@@ -14,7 +14,10 @@ os.environ['DISPLAY'] = ':0'
 picam2 = Picamera2()
 picam2.start()
 print("controls before:", picam2.controls)
-picam2.set_controls({"AwbMode": 0})
+picam2.set_controls({
+    "AwbMode": 1,
+    "AwbGain": [2.0, 1.0]
+    })
 print("controls after:", picam2.controls)
 
 time.sleep(2)
