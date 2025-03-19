@@ -18,7 +18,8 @@ print("camera controls:", picam2.controls.get_libcamera_controls())
 print("here is the controls:", picam2.camera_controls)
 picam2.set_controls({
     "AwbEnable": False,
-    "ColourTemperature": 4500
+    "ColourTemperature": 4500,
+    "ColourGains": (1.5, 2.0),
 })
 print("controls after:", picam2.controls)
 
