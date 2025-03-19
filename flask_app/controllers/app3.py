@@ -16,7 +16,7 @@ picam2.start()
 print(picam2.controls.get_libcamera_controls)
 print("controls before:", picam2.controls)
 picam2.set_controls({
-    "AwbEnable": 0,
+    "AwbEnable": 1,
     "AwbGain": (1.0, 1.0)
 })
 print("controls after:", picam2.controls)
