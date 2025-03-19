@@ -13,7 +13,7 @@ os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
 picam2.start()
-print(picam2.get_controls())
+print(dir(picam2))
 print("controls before:", picam2.controls)
 picam2.set_controls({
     "AwbEnable": 1,
