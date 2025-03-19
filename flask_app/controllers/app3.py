@@ -17,7 +17,8 @@ print(dir(picam2))
 print("camera controls:", picam2.controls.get_libcamera_controls())
 print("here is the controls:", picam2.camera_controls)
 picam2.set_controls({
-    "AwbEnable": True,
+    "AwbEnable": False,
+    "AwbMode": 1,
 })
 print("controls after:", picam2.controls)
 
