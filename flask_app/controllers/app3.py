@@ -15,6 +15,7 @@ picam2 = Picamera2()
 picam2.start()
 print(dir(picam2))
 print("camera controls:", picam2.controls.get_libcamera_controls())
+print("here is the controls:", picam2.camera_controls)
 picam2.set_controls({
     "AwbEnable": 1,
     "AwbGain": (1.0, 1.0)
