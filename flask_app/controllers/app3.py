@@ -28,7 +28,7 @@ picam2.set_controls({
     "AwbEnable": False,
     # "AeEnable": False,
     "ColourTemperature": 4500,
-    "ColourGains": (2.5, 1.5),
+    "ColourGains": (4.5, 1.5),
 })
 
 time.sleep(2)
@@ -41,13 +41,14 @@ time.sleep(2)
 #     if key == ord('q'):
 #         print("Exiting...")
 #         break
+print("controls set before the capture:", picam2.controls)
 
 request = picam2.capture_request()
 frame = request.make_array("main")
 request.release()
 
+print("controls after the capture:", picam2.controls)
 cv2.imshow("Captured Frame", frame)
-print("controls after:", picam2.controls)
 print(picam2.camera_config)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
