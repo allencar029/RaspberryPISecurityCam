@@ -17,15 +17,15 @@ picam2.stop()
 
 picam2.start()
 
-print("here are the controls after starting the cam:", picam2.camera_controls)
+# print("here are the controls after starting the cam:", picam2.camera_controls)
 
 time.sleep(2)
 
 picam2.set_controls({
     "AwbEnable": False,
     # "AeEnable": False,
-    "ColourTemperature": 4500,
-    "ColourGains": (6.0, 1.5),
+    "ColourTemperature": 3500,
+    "ColourGains": (2.5, 2.0),
 })
 # print(dir(picam2))
 # print("camera controls:", picam2.controls.get_libcamera_controls())
