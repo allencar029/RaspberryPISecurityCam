@@ -18,7 +18,7 @@ picam2.set_controls({
     "AwbEnable": False,
     # "AeEnable": False,
     "ColourTemperature": 4500,
-    "ColourGains": (4.5, 1.5),
+    "ColourGains": (6.0, 1.5),
 })
 
 print("here are the controls before starting the camera:", picam2.camera_controls)
