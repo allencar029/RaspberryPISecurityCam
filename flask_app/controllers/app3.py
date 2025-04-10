@@ -23,9 +23,9 @@ print("here is the controls:", picam2.camera_controls)
 
 picam2.set_controls({
     "AwbEnable": False,
-    "AeEnable": False,
-    "ColourTemperature": 4500,
-    "ColourGains": (1.5, 2.0),
+    # "AeEnable": False,
+    # "ColourTemperature": 4500,
+    "ColourGains": (4.0, 0.5),
 })
 print("controls after:", picam2.controls)
 
