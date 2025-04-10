@@ -48,7 +48,7 @@ request = picam2.capture_request()
 frame = request.make_array("main")
 request.release()
 
-cv2.imwrite("/home/calle19", frame)
+cv2.imwrite("/home/calle19/image.jpg", frame)
 cv2.imshow("Captured Frame", frame)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
