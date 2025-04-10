@@ -21,11 +21,11 @@ picam2.set_controls({
     "ColourGains": (4.5, 1.5),
 })
 
-print("here are the controls before starting the camera:", picam2.controls)
+print("here are the controls before starting the camera:", picam2.camera_controls)
 
 picam2.start()
 
-print("here are the controls after starting the cam:", picam2.controls)
+print("here are the controls after starting the cam:", picam2.camera_controls)
 
 time.sleep(2)
 
