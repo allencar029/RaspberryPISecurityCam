@@ -12,16 +12,8 @@ subprocess.run('export DISPLAY=:0', shell=True, executable='/bin/bash')
 os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
+
 picam2.stop()
-
-picam2.set_controls({
-    "AwbEnable": False,
-    # "AeEnable": False,
-    "ColourTemperature": 4500,
-    "ColourGains": (6.0, 1.5),
-})
-
-print("here are the controls before starting the camera:", picam2.camera_controls)
 
 picam2.start()
 
@@ -29,6 +21,12 @@ print("here are the controls after starting the cam:", picam2.camera_controls)
 
 time.sleep(2)
 
+picam2.set_controls({
+    "AwbEnable": False,
+    # "AeEnable": False,
+    "ColourTemperature": 4500,
+    "ColourGains": (6.0, 1.5),
+})
 # print(dir(picam2))
 # print("camera controls:", picam2.controls.get_libcamera_controls())
 # print("here is the controls:", picam2.camera_controls)
