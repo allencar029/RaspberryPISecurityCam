@@ -15,12 +15,6 @@ picam2 = Picamera2()
 picam2.stop()
 
 
-picam2.set_controls({
-    "AwbEnable": False,
-    # "AeEnable": False,
-    # "ColourTemperature": 4500,
-    "ColourGains": (2.5, 1.5),
-})
 
 picam2.start()
 
@@ -30,8 +24,14 @@ time.sleep(2)
 # print("camera controls:", picam2.controls.get_libcamera_controls())
 print("here is the controls:", picam2.camera_controls)
 
+picam2.set_controls({
+    "AwbEnable": False,
+    # "AeEnable": False,
+    # "ColourTemperature": 4500,
+    "ColourGains": (2.5, 1.5),
+})
 
-# time.sleep(2)
+time.sleep(2)
 
 # while True:
 #     frame = picam2.capture_array("main")
