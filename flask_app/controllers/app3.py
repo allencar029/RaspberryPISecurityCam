@@ -13,7 +13,11 @@ os.environ['DISPLAY'] = ':0'
 
 picam2 = Picamera2()
 
+
 picam2.stop()
+
+config = picam2.create_still_configuration(main={"format": "RGB888", "size": (1536, 864)})
+picam2.configure(config)
 
 picam2.start()
 
