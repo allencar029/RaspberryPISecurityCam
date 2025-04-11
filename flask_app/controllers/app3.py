@@ -22,10 +22,11 @@ picam2.start()
 time.sleep(2)
 
 picam2.set_controls({
-    "AwbEnable": False,
-    # "AeEnable": False,
-    "ColourTemperature": 3500,
-    "ColourGains": (2.5, 2.0),
+    # "AwbEnable": False,
+    # # "AeEnable": False,
+    # "ColourTemperature": 3500,
+    # "ColourGains": (2.5, 0.0),
+    "AwbMode": 1
 })
 # print(dir(picam2))
 # print("camera controls:", picam2.controls.get_libcamera_controls())
@@ -48,7 +49,7 @@ request = picam2.capture_request()
 frame = request.make_array("main")
 request.release()
 
-cv2.imwrite("/home/calle19/image.jpg", frame)
+cv2.imwrite("/home/calle19/test_image.jpg", frame)
 cv2.imshow("Captured Frame", frame)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
