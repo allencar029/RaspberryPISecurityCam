@@ -22,11 +22,11 @@ picam2.start()
 time.sleep(2)
 
 picam2.set_controls({
-    # "AwbEnable": False,
-    # # "AeEnable": False,
-    # "ColourTemperature": 3500,
-    # "ColourGains": (2.5, 0.0),
-    "AwbMode": 1
+    "AwbEnable": False,
+    # "AeEnable": False,
+    "ColourTemperature": 3500,
+    "ColourGains": (2.5, 0.0),
+    # "AwbMode": 1
 })
 # print(dir(picam2))
 # print("camera controls:", picam2.controls.get_libcamera_controls())
