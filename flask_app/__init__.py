@@ -7,5 +7,3 @@ def create_app():
     from flask_app.controllers import app2
 
     return app
-
-app = create_app()
