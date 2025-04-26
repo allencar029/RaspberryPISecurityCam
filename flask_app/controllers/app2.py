@@ -10,7 +10,7 @@ HEIGHT = 720
 FRAMERATE = 25
 JPEG_QUALITY = 60
 
-def generate0_frames():
+def generate_frames():
     picam2 = None
     try:
         picam2 = Picamera2()
