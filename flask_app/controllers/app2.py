@@ -35,7 +35,8 @@ def generate_frames():
                 time.sleep(0.1)
                 continue
 
-            x, buffer = cv2.imencode('.jpg', frame)
+            encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), JPEG_QUALITY]
+            x, buffer = cv2.imencode('.jpg', frame, encode_param)
 
             if not x:
                 print("Error: Could not encode frame")
