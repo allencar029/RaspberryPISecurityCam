@@ -1,15 +1,8 @@
 from flask_app import app
 from flask import Response, render_template
 import cv2
-import numpy as np
-import subprocess
-import os
 import time
 from picamera2 import Picamera2 
-
-subprocess.run('export DISPLAY=:0', shell=True, executable='/bin/bash')
-
-os.environ['DISPLAY'] = ':0'
 
 
 def generate_frames():
@@ -21,7 +14,19 @@ def generate_frames():
 
     while True:
         frame = picam2.capture_array("main")
+
+        if frame is None:
+            print("Warning: Captured empty frame.")
+            time.sleep(0.1)
+            continue
+
         x, buffer = cv2.imencode('.jpg', frame)
+
+        if not x:
+            print("Error: Could not encode frame")
+            continue
+
+
         frame_bytes = buffer.tobytes()
 
         yield (b'--frame\r\n'
