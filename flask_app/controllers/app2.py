@@ -28,15 +28,17 @@ def generate_frames():
         picam2.start()
 
         while True:
-            frame = picam2.capture_array("main")
+            frame_yuv = picam2.capture_array("main")
 
-            if frame is None:
+            if frame_yuv is None:
                 print("Warning: Captured empty frame.")
                 time.sleep(0.1)
                 continue
 
+            frame_rgb = cv2.cvtColor(frame_yuv, cv2.COLOR_YUV2RGB_I420)
+
             encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), JPEG_QUALITY]
-            x, buffer = cv2.imencode('.jpg', frame, encode_param)
+            x, buffer = cv2.imencode('.jpg', frame_rgb, encode_param)
 
             if not x:
                 print("Error: Could not encode frame")
@@ -55,7 +57,12 @@ def generate_frames():
 
 @app.route('/video')
 def video_feed():
-    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+    headers = {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0',
+        'Pragma': 'no-cache',
+        'Expires': '-1'
+    }
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame', headers=headers)
 
 @app.route('/')
 def index():
