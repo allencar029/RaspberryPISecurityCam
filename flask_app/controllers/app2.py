@@ -36,9 +36,10 @@ def generate_frames():
                 continue
 
             frame_rgb = cv2.cvtColor(frame_yuv, cv2.COLOR_YUV2RGB_I420)
+            frame_bgr = cv2.cvtColor(frame_rgb, cv2.COLOR_RGB2BGR)
 
             encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), JPEG_QUALITY]
-            x, buffer = cv2.imencode('.jpg', frame_rgb, encode_param)
+            x, buffer = cv2.imencode('.jpg', frame_bgr, encode_param)
 
             if not x:
                 print("Error: Could not encode frame")
